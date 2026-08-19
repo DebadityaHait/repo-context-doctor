@@ -1,0 +1,26 @@
+{
+  "name": "repo-context-doctor",
+  "version": "0.1.0",
+  "description": "Show the instruction graph your coding agents actually receive.",
+  "author": "Debaditya Hait",
+  "keywords": ["coding-agents", "codex", "claude-code", "cursor", "lint", "cli"],
+  "type": "module",
+  "bin": { "context-doctor": "dist/cli.js" },
+  "engines": { "node": ">=20" },
+  "files": ["dist", "README.md", "LICENSE", "SECURITY.md", "CHANGELOG.md"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/DebadityaHait/repo-context-doctor.git" },
+  "bugs": { "url": "https://github.com/DebadityaHait/repo-context-doctor/issues" },
+  "homepage": "https://github.com/DebadityaHait/repo-context-doctor#readme",
+  "publishConfig": { "access": "public", "provenance": true },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"require('node:fs').rmSync('dist/test',{recursive:true,force:true})\"",
+    "build:test": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build:test && node --test dist/test/*.test.js",
+    "test:cli": "npm run build && node dist/cli.js --help && node dist/cli.js --json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": { "@types/node": "^22.10.0", "typescript": "^5.7.2" }
+}
